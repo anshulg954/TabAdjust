@@ -15,6 +15,7 @@ A modular pipeline for evaluating and improving photovoltaic (PV) power forecast
 ---
 
 ## 📁 Project Structure
+<pre>
 TabAdjust/
 ├── data/
 │   ├── load.py                # Function to load input CSV
@@ -37,7 +38,7 @@ TabAdjust/
 │
 ├── run.py                     # Entry point with argparse + YAML config
 ├── pyproject.toml             # Project metadata & dependencies
-
+</pre>
 
 
 
