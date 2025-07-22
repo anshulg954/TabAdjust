@@ -1,0 +1,25 @@
+
+[project]
+name = "solar-adjuster"
+version = "0.1.0"
+description = "Forecast error adjuster using TabPFN and XGBoost"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.9"
+readme = "README.md"
+
+[project.dependencies]
+pandas = "*"
+numpy = "*"
+xgboost = "*"
+scikit-learn = "*"
+autogluon = "*"
+tabpfn-time-series = "*"
+pyyaml = "*"
+
+[tool.setuptools]
+packages = ["data", "models", "core", "evaluation"]
+include-package-data = true
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
