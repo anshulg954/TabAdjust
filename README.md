@@ -15,27 +15,29 @@ A modular pipeline for evaluating and improving photovoltaic (PV) power forecast
 ---
 
 ## 📁 Project Structure
+TabAdjust/
 ├── data/
-│ ├── load.py # Function to load input CSV
-│ └── preprocess.py # Basic preprocessing and lag feature generation
+│   ├── load.py                # Function to load input CSV
+│   └── preprocess.py          # Basic preprocessing and lag feature generation
 │
 ├── models/
-│ ├── tab_adjust.py # Contains BaseModel, TabPFNModel, and XGBModel
+│   └── tab_adjust.py          # Contains BaseModel, TabPFNModel, and XGBModel
 │
 ├── core/
-│ ├── preprocessing.py # Model-specific data preparation
-│ ├── feature_selection.py # Permutation-based feature selection
-│ ├── splits.py # Train/test split based on dates
+│   ├── preprocessing.py       # Model-specific data preparation
+│   ├── feature_selection.py   # Permutation-based feature selection
+│   ├── splits.py              # Train/test split based on dates
 │
 ├── evaluation/
-│ ├── metrics.py # MAE/RMSE evaluations for model & OCF
-│ └── runner.py # Main rolling evaluation logic
+│   ├── metrics.py             # MAE/RMSE evaluations for model & OCF
+│   └── runner.py              # Main rolling evaluation logic
 │
-│── utils/
-│ └── diagnostics.py # Optional styled display for notebooks
+├── utils/
+│   └── diagnostics.py         # Optional styled display for notebooks
 │
-├── run.py # Entry point with argparse + YAML config
-├── pyproject.toml # Project metadata & dependencies
+├── run.py                     # Entry point with argparse + YAML config
+├── pyproject.toml             # Project metadata & dependencies
+
 
 
 
