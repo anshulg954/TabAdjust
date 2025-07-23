@@ -68,7 +68,7 @@ Currently has optional parameters like --add_lagged_features
 
 ### 4. Interpreting Results
 The results are saved in a structured folder format under results/ for easy navigation and comparison across models and dates:
-
+<pre>
 results/                                        
 ├── model/                                     # TabPFN, XGBoost
 │   └── start_date/                            # Starting Date for Evaluation (Following Results are averaged between start date and max possible end date)
@@ -77,5 +77,5 @@ results/
 │       ├── avg_errors_per_horizon.csv         # Errors aggregated per forecast horizon only for all the dates
 │       ├── avg_errors_per_hour.csv            # Errors aggregated per hour of the day only for all the dates
 │       └── avg_errors_per_horizon_hour.csv    # Detailed breakdown by both hour and horizon
-
+</pre>
 <!-- ### 5.  Plotting ? -->
