@@ -34,4 +34,6 @@ def get_holdout_data(reference_day: pd.Timestamp, ts_data: TimeSeriesDataFrame):
     assert train_tsdf.index.get_level_values("timestamp").max() < test_tsdf.index.get_level_values("timestamp").min()
     assert test_tsdf['target'].isna().all()
 
+    logger.info(f"Train set size: {len(train_tsdf)}, Test set size: {len(test_tsdf)}")
+
     return train_tsdf, test_tsdf, test_tsdf_ground_truth

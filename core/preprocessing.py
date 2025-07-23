@@ -70,4 +70,5 @@ def prepare_data_for_model(train_df: pd.DataFrame, test_df: pd.DataFrame, model_
         important_features = train_df_model.drop(columns=[target_col]).columns.tolist()
 
     logger.info(f"Prepared data with {len(important_features)} features.")
+    logger.info(f"Most Important features: {important_features[:10]}...")
     return train_df_model, test_df_model, important_features

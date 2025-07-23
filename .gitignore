@@ -205,3 +205,6 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+adjuster_dataset_gsoc_v1.csv
+adjuster_env/
+results*

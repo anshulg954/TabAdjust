@@ -1,23 +1,27 @@
+import pandas as pd
 from IPython.display import display
+import sys
 
-def display_diagnostics(df, caption: str):
+def in_jupyter():
+    return 'ipykernel' in sys.modules
+
+def display_diagnostics(df: pd.DataFrame, caption: str):
     """
-    Display the first few rows and summary statistics of a DataFrame
-    with styled captions for visual inspection in notebooks.
-
-    Parameters
-    ----------
-    df : pd.DataFrame
-        The DataFrame to inspect.
-    caption : str
-        Caption label to annotate output.
+    Displays a styled preview and summary of the DataFrame in Jupyter;
+    falls back to print if run in scripts.
     """
     print(f"************* {caption.upper()} *********")
-    display(df.head(10).style.set_caption(f"{caption}").set_table_styles([
-        {"selector": "caption", "props": [("font-size", "16px"), ("font-weight", "bold")]}
-    ]))
+    if in_jupyter():
+        _ = display(df.head(10).style.set_caption(f"{caption}").set_table_styles([
+            {"selector": "caption", "props": [("font-size", "16px"), ("font-weight", "bold")]}
+        ]))
+    else:
+        print(df.head(10))
 
-    print(f"************* {caption.upper()} SUMMARY *********")
-    display(df.describe(include='all').style.set_caption(f"{caption} Summary").set_table_styles([
-        {"selector": "caption", "props": [("font-size", "16px"), ("font-weight", "bold")]}
-    ]))
+    # print(f"************* {caption.upper()} SUMMARY *********")
+    # if in_jupyter():
+    #     _ = display(df.describe(include='all').style.set_caption(f"{caption} Summary").set_table_styles([
+    #         {"selector": "caption", "props": [("font-size", "16px"), ("font-weight", "bold")]}
+    #     ]))
+    # else:
+    #     print(df.describe(include='all'))

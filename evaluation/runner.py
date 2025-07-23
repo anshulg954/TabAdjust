@@ -2,7 +2,7 @@ import logging
 import pandas as pd
 from core.splits import get_holdout_data
 from core.preprocessing import prepare_data_for_model
-from utils.diagnostics import display_diagnostics
+from utils.utils import display_diagnostics
 from models.tab_adjust import TabPFNModel, XGBModel
 from evaluation.metrics import evaluate_adjusted_forecast, evaluate_ocf_adjuster
 from tabpfn_time_series import FeatureTransformer
@@ -181,9 +181,14 @@ def evaluate_multiple_dates(dates, ts_data, model_type="tabpfn", show_diagnostic
             })
 
     metrics_df = pd.DataFrame(all_metrics)
+    logger.info("Metrics DataFrame created.")
+    if metrics_df.empty:
+        logger.warning("No metrics collected. Check data and model configurations.")
+    if True:
+        display_diagnostics(metrics_df, "Overall Metrics")
     overall, by_horizon, by_hour, by_both = aggregate_metrics(merged_errors)
     results_df = pd.concat(all_results, ignore_index=True)[[
-        "forecast_period_end_datetime_utc", "hour", "forecast_horizon_minutes",
+        "hour", "forecast_horizon_minutes",
         "actual_pv_generation_MW", "forecasted_pv_generation_MW",
         "adjusted_forecast", "adjusted_forecasted_pv_generation_MW",
         "error_model", "error_ocf"
